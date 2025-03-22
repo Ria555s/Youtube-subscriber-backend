@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Subscribers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AlmABetter</h1>
+        </header>
+        <h2>Get YouTube Subscribers</h2>
+        <div class="button-group">
+            <button class="active">Subscribers</button> 
+            <button>Subscribers by Name</button>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="Enter ID" />
+            <button>Subscribers by ID</button>
+        </div>
+        <footer>
+            <p>Demo ID: <span class="demo-id">85123w9WgXcq</span></p>
+            <div class="api-doc">
+                <a href="#">API Doc</a>
+                <script >
+                    document.addEventListener('DOMContentLoaded', function() {
+        const subscribersButton = document.querySelector('.button-group button:first-child');
+        const subscribersByNameButton = document.querySelector('.button-group button:nth-child(2)');
+        const subscribersByIdButton = document.querySelector('.input-group button');
+        const inputField = document.querySelector('.input-group input');
+        const displayArea = document.createElement('div');
+        document.querySelector('.container').appendChild(displayArea);
+
+        const allSubscribersUrl = 'http://localhost:3000/subscribers'; // Replace with your URL
+        const subscribersByNameUrl = 'http://localhost:3000/subscribers/names'; // Replace with your URL
+
+        subscribersButton.addEventListener('click', async function() {
+            try {
+                const response = await fetch(allSubscribersUrl);
+                const data = await response.json();
+                displayArea.innerHTML = JSON.stringify(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                displayArea.innerHTML = 'Error fetching data.';
+            }
+        });
+
+        subscribersByNameButton.addEventListener('click', async function() {
+            try {
+                const response = await fetch('http://localhost:3000/subscribers/names');
+                const data = await response.json();
+                displayArea.innerHTML = JSON.stringify(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                displayArea.innerHTML = 'Error fetching data.';
+            }
+        });
+
+        subscribersByIdButton.addEventListener('click', async function() {
+    const id = inputField.value;
+
+    // Basic ObjectId validation
+    if (!/^[0-9a-fA-F]{24}$/.test(id)) {
+        displayArea.innerHTML = '<p>Invalid ObjectId format.</p>';
+        return;
+    }
+
+    const url = `http://localhost:3000/subscribers/${id}`;
+
+    try {
+        displayArea.innerHTML = '<p>Loading...</p>'; // Loading state
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            if (response.status === 404) {
+                displayArea.innerHTML = '<p>Subscriber not found.</p>';
+            } else {
+                displayArea.innerHTML = `<p>Error: ${response.statusText}</p>`;
+            }
+            return;
+        }
+
+        const data = await response.json();
+        displayArea.innerHTML = JSON.stringify(data); 
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        displayArea.innerHTML = 'Error fetching data.';
+    }
+});
+    });
+                </script>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>
