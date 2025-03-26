@@ -37,7 +37,7 @@ app.get("/subscribers/names", async (req, res, next) => {
 app.get("/subscribers/:id", async (req, res) => {
     try {
         let id = req.params.id;
-        let foundSubscribers = await subscriber.findById(id);
+        let foundSubscribers = await subscribers.findById(id);
         res.status(200).json(foundSubscribers);
     } catch (error) {
         res.status(400).json({ message: error.message })
