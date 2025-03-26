@@ -37,7 +37,7 @@
 
                         const allSubscribersUrl = 'https://youtube-subscriber-backend-v3rx.onrender.com/subscribers';
                         const subscribersByNameUrl = 'https://youtube-subscriber-backend-v3rx.onrender.com/subscribers/names';
-                        const subscribersByIdUrl = `https://youtube-subscriber-backend-v3rx.onrender.com/subscribers/${id}`;
+                        const subscribersByIdUrl = `https://youtube-subscriber-backend-v3rx.onrender.com/subscribers/67d702fb291a9c485a4eb352`;
 
                         subscribersButton.addEventListener('click', async function () {
                             try {
@@ -69,8 +69,8 @@
                                 displayArea.innerHTML = '<p>Invalid ObjectId format.</p>';
                                 return;
                             }
-                            
-                            const url = `https://youtube-subscriber-backend-v3rx.onrender.com/subscribers/${id}`;
+                            let subscribersById = "67d702fb291a9c485a4eb352"
+                            const url = `https://youtube-subscriber-backend-v3rx.onrender.com/subscribers/67d702fb291a9c485a4eb352`;
                             console.log(url);
                             try {
                                 displayArea.innerHTML = '<p>Loading...</p>';
