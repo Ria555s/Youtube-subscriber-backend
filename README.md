@@ -43,5 +43,10 @@ This application will start and listen on port 3000. You can access the API thro
 
 If a subscriber with the specified :id is not found, the API will return an error message with a status code of 400.
 
-
+## Technologies Used
+* Node.js
+* Express.js
+* MongoDB
+* Bootstrap (for frontend styling)
+* Mongoose (for database interaction
       
