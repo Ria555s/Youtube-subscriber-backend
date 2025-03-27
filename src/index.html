@@ -25,9 +25,13 @@
         <footer>
             <p>Demo ID: <span class="demo-id">85123w9WgXcq</span></p>
             <div class="api-doc">
-                <a href="#">API Doc</a>
+                <a href="#" id="apiDocButton">API Doc</a>
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
+                        document.getElementById('apiDocButton').addEventListener('click', function (event) {
+                            event.preventDefault();
+                            window.open('https://documenter.getpostman.com/view/42662818/2sAYkLmwsW', '_blank');
+                        });
                         const subscribersButton = document.querySelector('.button-group button:first-child');
                         const subscribersByNameButton = document.querySelector('.button-group button:nth-child(2)');
                         const subscribersByIdButton = document.querySelector('.input-group button');
